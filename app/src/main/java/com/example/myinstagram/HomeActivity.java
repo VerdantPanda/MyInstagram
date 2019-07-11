@@ -11,8 +11,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.example.myinstagram.model.Post;
 import com.parse.FindCallback;
@@ -21,21 +24,35 @@ import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity {
 
+    List<Post> posts;
+    PostAdapter postAdapter;
+    //@BindView(R.id.rvPosts) RecyclerView rvPosts;
+    RecyclerView rvPosts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //ButterKnife.bind(this);
 
         //action bar
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
+        rvPosts = findViewById(R.id.rvPosts);
+        posts = new ArrayList<>();
+        postAdapter = new PostAdapter(posts);
+        rvPosts.setAdapter(postAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        rvPosts.setLayoutManager(layoutManager);
 
         loadTopPosts();
-
 
     }
 
@@ -44,25 +61,36 @@ public class HomeActivity extends AppCompatActivity {
         postsQuery.getTop().withUser();
         postsQuery.findInBackground(new FindCallback<Post>() {
             @Override
-            public void done(List<Post> objects, ParseException e) {
+            public void done(List<com.example.myinstagram.model.Post> objects, ParseException e) {
                 if (e == null) {
-                    for (int i = 0; i < objects.size(); i++) {
-                        Log.d("HomeActivity",
-                                String.format("Post[%d] = %s\nusername: %s",
-                                        i,
-                                        objects.get(i).getDescription(),
-                                        objects.get(i).getUser().getUsername()
-                                ));
-                    }
+                    // Log.d("HomeActivity", ""+objects.size());
+//                    for (int i = 0; i < objects.size(); i++) {
+//                        Log.d("HomeActivity", posts.toString());
+//                        posts.add(objects.get(i));
+//                        postAdapter.notifyItemChanged(posts.size() - 1);
+//                    }
                 } else {
                     e.printStackTrace();
                 }
             }
         });
+
+
+        try {
+            for (int i = 0; i < postsQuery.count(); i++) {
+                posts.add(postsQuery.getFirst());
+                postAdapter.notifyItemChanged(posts.size() - 1);
+            }
+        } catch (ParseException e) {
+            Log.d("HomeActivity", e.toString());
+        }
+        Toast.makeText(getApplicationContext(), "topPosts loaded", Toast.LENGTH_LONG).show();
     }
 
     private void createPost(String description, ParseFile imageFile, ParseUser user) {
-        //TODO: create and save post
+        //posts.add(new Post(description, imageFile, user));
+        postAdapter.notifyDataSetChanged();
+        //TODO: when taking picture will need to create post, presumably using this function
     }
 
 
@@ -73,11 +101,9 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
-    public void logout(){
+    public void logout() {
         ParseUser.logOut();
     }
-
-
 
 
 }
