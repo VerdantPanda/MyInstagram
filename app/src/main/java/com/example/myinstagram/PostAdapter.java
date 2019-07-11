@@ -14,6 +14,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.myinstagram.model.Post;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
@@ -51,7 +56,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 .placeholder(R.color.black)
                 .into(viewHolder.ivPostImage);
         viewHolder.tvDescription.setText(post.getDescription());
-//        viewHolder.tvTimeStamp.setText(post.get("createdAt").toString());
+
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        viewHolder.tvTimeStamp.setText(df.format(post.getCreatedAt()));
 
     }
 

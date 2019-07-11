@@ -77,10 +77,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         try {
-            for (int i = 0; i < postsQuery.count(); i++) {
-                posts.add(postsQuery.getFirst());
-                postAdapter.notifyItemChanged(posts.size() - 1);
-            }
+            posts.addAll(postsQuery.find());
         } catch (ParseException e) {
             Log.d("HomeActivity", e.toString());
         }
