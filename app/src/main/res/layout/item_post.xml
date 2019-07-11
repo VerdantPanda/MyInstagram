@@ -55,7 +55,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="400dp"
-        android:layout_height="wrap_content"
+        android:layout_height="37dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -67,32 +67,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPostImage">
 
-        <ImageView
-            android:id="@+id/ivComment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            app:srcCompat="@drawable/ufi_comment" />
 
         <ImageView
             android:id="@+id/ivLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             app:srcCompat="@drawable/ufi_heart" />
+
+
+        <ImageView
+            android:id="@+id/ivComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="18dp"
+            app:srcCompat="@drawable/ufi_comment" />
+
+
 
         <ImageView
             android:id="@+id/ivSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             app:srcCompat="@drawable/direct" />
 
         <ImageView
             android:id="@+id/ivSave"
             android:layout_width="21dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="270dp"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="5dp"
             app:srcCompat="@drawable/ufi_save_active" />
     </LinearLayout>
 

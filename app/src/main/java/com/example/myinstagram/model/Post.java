@@ -1,16 +1,21 @@
 package com.example.myinstagram.model;
 
+import androidx.versionedparcelable.ParcelField;
+
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
+//@Parcel
 @ParseClassName("Post")
 public class Post extends ParseObject {
-    private static final String KEY_DESCRIPTION = "description";
-    private static final String KEY_IMAGE = "image";
-    private static final String KEY_USER = "user";
+    static final String KEY_DESCRIPTION = "description";
+    static final String KEY_IMAGE = "image";
+    static final String KEY_USER = "user";
 
 
     public String getDescription() {

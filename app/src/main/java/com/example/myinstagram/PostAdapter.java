@@ -2,6 +2,7 @@ package com.example.myinstagram;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,6 +14,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.myinstagram.model.Post;
+
+import org.parceler.Parcel;
+import org.parceler.Parcels;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -44,7 +48,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Post post = mPosts.get(i);
+        final Post post = mPosts.get(i);
         Log.d("PostAdapter", String.format("item %d bound by onBindViewHolder", i));
         viewHolder.tvPostUser.setText(post.getUser().get("handle").toString());
 //        Glide.with(context)
@@ -53,8 +57,21 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 //                .into(viewHolder.ivPostUserImage);
         Glide.with(context)
                 .load(post.getImage().getUrl())
-                .placeholder(R.color.black)
+                .placeholder(R.color.design_default_color_primary_dark)
                 .into(viewHolder.ivPostImage);
+
+        viewHolder.ivPostImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toDetailActivity = new Intent(context, DetailActivity.class);
+                //TODO: place current post into intent using putExtras()
+                toDetailActivity.putExtra("post", Parcels.wrap(post));
+                //TODO: fire intent to activity
+                context.startActivity(toDetailActivity);
+            }
+
+        });
+
         viewHolder.tvDescription.setText(post.getDescription());
 
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");

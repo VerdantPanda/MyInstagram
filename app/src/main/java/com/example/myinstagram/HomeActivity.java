@@ -59,6 +59,7 @@ public class HomeActivity extends AppCompatActivity {
     private void loadTopPosts() {
         final Post.Query postsQuery = new Post.Query();
         postsQuery.getTop().withUser();
+
         postsQuery.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<com.example.myinstagram.model.Post> objects, ParseException e) {
