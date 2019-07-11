@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".MainActivity">
 
     <EditText
@@ -12,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
         android:layout_marginLeft="99dp"
-        android:layout_marginTop="72dp"
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
         android:ems="10"
@@ -20,7 +20,6 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/etPasswordInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -30,7 +29,6 @@
         android:layout_height="45dp"
         android:layout_marginStart="99dp"
         android:layout_marginLeft="99dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
         android:ems="10"
@@ -38,7 +36,6 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etUsernameInput" />
 
@@ -47,31 +44,48 @@
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="201dp"
         android:layout_height="48dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="105dp"
-        android:layout_marginRight="105dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginLeft="106dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
         android:text="log in"
+        app:layout_constraintBottom_toTopOf="@+id/btSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordInput" />
+
+    <Button
+        android:id="@+id/btSignUp"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="201dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginLeft="106dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:text="sign up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPasswordInput"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btLogin" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="189dp"
         android:layout_height="113dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="117dp"
-        android:layout_marginRight="117dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginLeft="106dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginRight="116dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintBottom_toTopOf="@+id/etUsernameInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/nux_dayone_landing_logo" />
 </android.support.constraint.ConstraintLayout>

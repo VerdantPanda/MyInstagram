@@ -83,12 +83,12 @@
         <item name="android:paddingBottom">1.0dip</item>
         <item name="capitalize">false</item>
     </style>
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     <style name="AdDisclaimerBottomSheetDialogTheme">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
