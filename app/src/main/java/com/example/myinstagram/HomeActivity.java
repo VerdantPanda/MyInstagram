@@ -1,6 +1,7 @@
 package com.example.myinstagram;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -15,6 +16,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.myinstagram.model.Post;
@@ -36,6 +38,8 @@ public class HomeActivity extends AppCompatActivity {
     PostAdapter postAdapter;
     //@BindView(R.id.rvPosts) RecyclerView rvPosts;
     RecyclerView rvPosts;
+
+    //MenuItem miLogout = findViewById(R.menu.menu_main);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +101,19 @@ public class HomeActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_logout:
+                logout();
+                startActivity(new Intent(HomeActivity.this, MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void logout() {
