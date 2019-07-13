@@ -34,13 +34,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        //getSupportActionBar().setLogo(R.drawable.nav_logo_whiteout);
-        //getSupportActionBar().setBackgroundDrawable();
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "LOGIN ATTEMPT OCCURED", Toast.LENGTH_LONG).show();
                 final String username = etUsernameInput.getText().toString();
                 final String password = etPasswordInput.getText().toString();
                 login(username, password);
@@ -53,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(), "sign up clicked", Toast.LENGTH_LONG).show();
+
                 Intent toSignUpActivity = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(toSignUpActivity);
             }
@@ -92,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 }

@@ -26,15 +26,12 @@ import java.util.Date;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
-
-
     List<Post> mPosts;
     Context context;
 
     public PostAdapter(List<Post> posts) {
         mPosts = posts;
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -48,13 +45,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        final Post post = mPosts.get(i);
+        //operation on i to reverse list
+        final Post post = mPosts.get(mPosts.size() - 1 - i);
         Log.d("PostAdapter", String.format("item %d bound by onBindViewHolder", i));
         viewHolder.tvPostUser.setText(post.getUser().get("handle").toString());
-//        Glide.with(context)
-//                .load(post.getUser().get("profilePicture"))
-//                .placeholder(R.color.black)
-//                .into(viewHolder.ivPostUserImage);
         Glide.with(context)
                 .load(post.getImage().getUrl())
                 .placeholder(R.color.design_default_color_primary_dark)
@@ -91,7 +85,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public ImageView ivComment;
         public ImageView ivLike;
         public ImageView ivSave;
-        // TODO: consider eliminating unused Views
         public ImageView ivPostImage;
         public TextView tvDescription;
         public TextView tvTimeStamp;
